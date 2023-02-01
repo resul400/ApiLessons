@@ -3,6 +3,7 @@ package test;
 import baseURL.JsonPlaceHolderBaseURL;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.List;
@@ -69,10 +70,12 @@ public class C15_BaseUrlJsonPlaceHolder extends JsonPlaceHolderBaseURL {
          */
     specJsonPlace.pathParams("pp1","posts","pp2","50");
     Response response= given().spec(specJsonPlace).when().get("/{pp1}/{pp2}");
-    response.then().assertThat().statusCode(200);
-
     JsonPath resJsonPath= response.jsonPath();
-    resJsonPath.get().equals(null);
+    response.then().assertThat().statusCode(200).body(null);
+
+
+
+
 
     }
 }
