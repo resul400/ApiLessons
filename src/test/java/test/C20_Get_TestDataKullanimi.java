@@ -55,24 +55,6 @@ public class C20_Get_TestDataKullanimi extends DummyBaseURL {
         Assert.assertEquals(expData.getJSONObject("data").get("employee_salary"),resJP.get("data.employee_salary"));
         Assert.assertEquals(expData.getJSONObject("data").get("profile_image"),resJP.get("data.profile_image"));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 }
