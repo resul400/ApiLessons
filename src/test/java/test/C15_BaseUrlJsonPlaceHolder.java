@@ -1,8 +1,11 @@
 package test;
 
 import baseURL.JsonPlaceHolderBaseURL;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -64,6 +67,12 @@ public class C15_BaseUrlJsonPlaceHolder extends JsonPlaceHolderBaseURL {
             request gonderdigimizde donen response’un status code’unun 200 oldugunu ve
             response body’sinin null oldugunu test edin
          */
+    specJsonPlace.pathParams("pp1","posts","pp2","50");
+    Response response= given().spec(specJsonPlace).when().get("/{pp1}/{pp2}");
+    response.then().assertThat().statusCode(200);
+
+    JsonPath resJsonPath= response.jsonPath();
+    resJsonPath.get().equals(null);
 
     }
 }
